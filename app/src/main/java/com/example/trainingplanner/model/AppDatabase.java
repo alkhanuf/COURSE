@@ -18,7 +18,7 @@ import java.util.List;
 public class AppDatabase extends SQLiteOpenHelper {
 
     public AppDatabase(Context context) {
-        super(context, "training_planner.db", null, 14);
+        super(context, "training_planner.db", null, 15);
 }
 
     @Override
@@ -538,6 +538,22 @@ public class AppDatabase extends SQLiteOpenHelper {
         }
 
         db.execSQL("UPDATE active_days SET is_completed = 1 WHERE id = ?", new Object[]{dayId});
+    }
+
+
+    //АНАЛИЗ
+    public boolean hasNotFinishedDays() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM active_days WHERE is_completed = 0", null);
+
+        int count = 0;
+        if (cursor.moveToFirst()) {
+            count = cursor.getInt(0);
+        }
+        cursor.close();
+        db.close();
+
+        return count > 0;
     }
 
 }

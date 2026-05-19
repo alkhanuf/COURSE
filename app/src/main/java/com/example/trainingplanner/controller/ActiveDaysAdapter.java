@@ -50,7 +50,7 @@ public class ActiveDaysAdapter extends RecyclerView.Adapter<ActiveDaysAdapter.Da
                 Toast.makeText(holder.itemView.getContext(), "Тренировка выполнена", Toast.LENGTH_LONG).show();
             });
         } else {
-
+            holder.itemView.setAlpha(1f);
             holder.itemView.setOnClickListener(v -> {clickListener.onDayClick(currentDay);
             });
         }

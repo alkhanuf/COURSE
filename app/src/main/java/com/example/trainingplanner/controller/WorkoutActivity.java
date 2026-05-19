@@ -1,4 +1,5 @@
 package com.example.trainingplanner.controller;
+import android.content.Intent;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -14,6 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.trainingplanner.MainActivity;
 import com.example.trainingplanner.R;
 import com.example.trainingplanner.model.AppDatabase;
 import com.example.trainingplanner.model.entities.ActiveExercise;
@@ -93,7 +96,8 @@ public class WorkoutActivity extends AppCompatActivity {
             db.saveWorkoutResults(dayId, exercisesList);
 
             Toast.makeText(this, "Тренировка сохранена", Toast.LENGTH_LONG).show();
-
-            finish();});
+            Intent intent = new Intent(WorkoutActivity.this, MainActivity.class);
+            startActivity(intent);
+        });
     }
 }

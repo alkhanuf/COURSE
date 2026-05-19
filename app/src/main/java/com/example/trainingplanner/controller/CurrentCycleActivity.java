@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,6 +27,7 @@ public class CurrentCycleActivity extends AppCompatActivity {
     private TextView tvProgramTitle;
     private Spinner spinnerWeeks;
     private RecyclerView rvActiveDays;
+    private Button btnAnalysis;
 
     private AppDatabase db;
     private ActiveDaysAdapter adapter;
@@ -40,6 +42,7 @@ public class CurrentCycleActivity extends AppCompatActivity {
         tvProgramTitle = findViewById(R.id.tvProgramTitle);
         spinnerWeeks = findViewById(R.id.spinnerWeeks);
         rvActiveDays = findViewById(R.id.rvActiveDays);
+        btnAnalysis = findViewById(R.id.btnAnalysis);
 
         rvActiveDays.setLayoutManager(new LinearLayoutManager(this));
 
@@ -49,6 +52,15 @@ public class CurrentCycleActivity extends AppCompatActivity {
             finish();
             return;
         }
+
+        btnAnalysis.setOnClickListener(v -> {
+            if (db.hasNotFinishedDays()) {
+                Toast.makeText(this, "У вас есть не завершенные тренировки", Toast.LENGTH_LONG).show();
+            } else {
+                android.content.Intent intent = new android.content.Intent(this, AnalysisActivity.class);
+                startActivity(intent);
+            }
+        });
 
         tvProgramTitle.setText("Цикл: " + programTitle);
 
