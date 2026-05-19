@@ -556,4 +556,25 @@ public class AppDatabase extends SQLiteOpenHelper {
         return count > 0;
     }
 
+    public List<ActiveExercise> getAllExercisesForAnalysis() {
+        List<ActiveExercise> list = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(
+                "SELECT exercise_name, plan_weight, plan_reps, actual_weight, actual_reps FROM active_exercises", null
+        );
+
+        if (cursor.moveToFirst()) {
+            do {
+                ActiveExercise ex = new ActiveExercise(cursor.getString(0), cursor.getDouble(1), cursor.getInt(2));
+                ex.setActualWeight(cursor.getDouble(3));
+                ex.setActualReps(cursor.getInt(4));
+                list.add(ex);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return list;
+    }
+
 }
