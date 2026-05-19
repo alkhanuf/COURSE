@@ -1,83 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tools="http://tools.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="25dp"
-    tools:context=".MainActivity"
-    tools:ignore="ExtraText"><![CDATA[]]]>
+    android:background="@color/background_dark"
+    android:padding="24dp"
+    android:layout_margin="16dp"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/russo_one"
+        android:text="Планировщик\nтренировок"
+        android:textColor="@color/white_text"
+        android:textSize="45sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnCurrentCycle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:minHeight="80dp"
-        android:text="Текущий цикл"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/purple_button"
+        android:minHeight="100dp"
+        android:text="ТЕКУЩИЙ ЦИКЛ"
+        android:textColor="@color/white_text"
+        android:textSize="20sp"
+        android:textStyle="bold"
+
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 
     <Button
+        android:id="@+id/btnExercises"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="@color/surface_dark"
+        android:gravity="center"
+        android:text="Упражнения"
+        android:textColor="@color/white_text"
+        android:textSize="16sp"
+
+        app:layout_constraintDimensionRatio="1:0.7"
+        app:layout_constraintEnd_toStartOf="@+id/btnTemplates"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnCurrentCycle" />
+
+    <Button
         android:id="@+id/btnTemplates"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
         android:text="Шаблоны дней"
+        android:textColor="@color/white_text"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:backgroundTint="@color/surface_dark"
+
+        app:layout_constraintDimensionRatio="1:0.7"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@id/btnExercises"
-        app:layout_constraintTop_toBottomOf="@id/btnCurrentCycle" />
+        app:layout_constraintTop_toTopOf="@+id/btnExercises"
+        app:layout_constraintTop_toBottomOf="@+id/btnExercises" />
 
     <Button
         android:id="@+id/btnTemplatesProgram"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="92dp"
-        android:layout_marginEnd="0dp"
+        android:layout_marginTop="16dp"
+        android:minHeight="70dp"
         android:text="Шаблоны программ"
+        android:textColor="@color/white_text"
+        android:textSize="16sp"
+        android:backgroundTint="@color/surface_dark"
+
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnCurrentCycle" />
-
-    <Button
-        android:id="@+id/btnExercises"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="8dp"
-        android:text="Упражнения"
-        app:layout_constraintEnd_toStartOf="@+id/btnTemplates"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnCurrentCycle" />
-
-
-    <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:fontFamily="@font/russo_one"
-        android:text="Планировщик тренировок"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="48sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/btnExercises" />
 
     <Button
         android:id="@+id/btnNewCycle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="52dp"
-        android:text="Создать новый цикл"
+        android:layout_marginBottom="16dp"
+        android:minHeight="60dp"
+        android:text="+ Создать новый цикл"
+        android:textColor="@color/purple_primary"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        style="?android:attr/borderlessButtonStyle"
+        android:backgroundTint="@color/purple_primary"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
