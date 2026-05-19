@@ -1,10 +1,12 @@
 package com.example.trainingplanner.controller;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -42,8 +44,16 @@ public class ActiveDaysAdapter extends RecyclerView.Adapter<ActiveDaysAdapter.Da
         ActiveDay currentDay = days.get(position);
         holder.tvDayTitle.setText(currentDay.getTitle());
 
-        holder.itemView.setOnClickListener(v -> {clickListener.onDayClick(currentDay);
-        });
+        if (currentDay.isCompleted()) {
+            holder.itemView.setAlpha(0.4f);
+            holder.itemView.setOnClickListener(v -> {
+                Toast.makeText(holder.itemView.getContext(), "Тренировка выполнена", Toast.LENGTH_LONG).show();
+            });
+        } else {
+
+            holder.itemView.setOnClickListener(v -> {clickListener.onDayClick(currentDay);
+            });
+        }
 
         holder.containerExercises.removeAllViews();
 

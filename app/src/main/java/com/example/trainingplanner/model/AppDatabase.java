@@ -18,7 +18,7 @@ import java.util.List;
 public class AppDatabase extends SQLiteOpenHelper {
 
     public AppDatabase(Context context) {
-        super(context, "training_planner.db", null, 13);
+        super(context, "training_planner.db", null, 14);
 }
 
     @Override
@@ -463,15 +463,17 @@ public class AppDatabase extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor dayCursor = db.rawQuery(
-                "SELECT id, title FROM active_days WHERE week_number = ? ORDER BY id ASC",
+                "SELECT id, title, is_completed FROM active_days WHERE week_number = ? ORDER BY id ASC",
                 new String[]{String.valueOf(weekNum)});
 
         if (dayCursor.moveToFirst()) {
             do {
                 long dayId = dayCursor.getLong(0);
                 String title = dayCursor.getString(1);
+                int isCompletedInt = dayCursor.getInt(2);
 
                ActiveDay activeDay = new ActiveDay(dayId, title, weekNum);
+               activeDay.setCompleted(isCompletedInt == 1);
 
                 Cursor exCursor = db.rawQuery(
                         "SELECT exercise_name, plan_weight, plan_reps FROM active_exercises WHERE day_id = ? ORDER BY id ASC",
