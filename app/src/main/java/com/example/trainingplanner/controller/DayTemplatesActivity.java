@@ -65,7 +65,7 @@ public class DayTemplatesActivity extends AppCompatActivity {
     private void showSelectExercisesDialog(String title) {
         List<Exercise> allExercises = db.getAllExercises();
         if (allExercises.isEmpty()) {
-            Toast.makeText(this, "Сначала создайте упражнения!", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Сначала создайте упражнения!", Toast.LENGTH_SHORT).show();
             return;
         }
 

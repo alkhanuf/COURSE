@@ -4,6 +4,6 @@ public class ExerciseAnalysis {
     public String name;
     public double maxPlan1PM;
     public double maxActual1PM;
-    public double totalVolume;
+    public double totalWeight;
     public int status;
 }

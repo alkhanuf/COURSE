@@ -18,7 +18,7 @@ import java.util.List;
 public class AppDatabase extends SQLiteOpenHelper {
 
     public AppDatabase(Context context) {
-        super(context, "training_planner.db", null, 15);
+        super(context, "training_planner.db", null, 17);
 }
 
     @Override
@@ -42,103 +42,64 @@ public class AppDatabase extends SQLiteOpenHelper {
         fillTestData(db);
     }
 
+    //заполнение тестовыми данными
     private void fillTestData(SQLiteDatabase db) {
-        db.execSQL("INSERT INTO exercises (name, base_weight) VALUES ('Жим лежа', 60.0)");
-        db.execSQL("INSERT INTO exercises (name, base_weight) VALUES ('Приседания со штангой', 70.0)");
-        db.execSQL("INSERT INTO exercises (name, base_weight) VALUES ('Становая тяга', 90.0)");
-        db.execSQL("INSERT INTO exercises (name, base_weight) VALUES ('Армейский жим', 25.0)");
-        db.execSQL("INSERT INTO exercises (name, base_weight) VALUES ('Тяга верхнего блока', 45.0)");
-        db.execSQL("INSERT INTO exercises (name, base_weight) VALUES ('Бицепс со штангой', 30.0)");
-        db.execSQL("INSERT INTO exercises (name, base_weight) VALUES ('Жим гантелей на наклонной', 50.0)");
-        db.execSQL("INSERT INTO exercises (name, base_weight) VALUES ('Разводка гантелей лежа', 25.0)");
-        db.execSQL("INSERT INTO exercises (name, base_weight) VALUES ('Жим гантелей сидя', 30.0)");
-        db.execSQL("INSERT INTO exercises (name, base_weight) VALUES ('Тяга штанги в наклоне', 55.0)");
-        db.execSQL("INSERT INTO exercises (name, base_weight) VALUES ('Пуловер с гантелью', 30.0)");
-        db.execSQL("INSERT INTO exercises (name, base_weight) VALUES ('Молотковые сгибания', 25.0)");
-        db.execSQL("INSERT INTO exercises (name, base_weight) VALUES ('Французский жим лежа', 35.0)");
-        db.execSQL("INSERT INTO exercises (name, base_weight) VALUES ('Скручивания на пресс', 0.0)");
-        db.execSQL("INSERT INTO exercises (name, base_weight) VALUES ('Разгибания ног в тренажере', 50.0)");
-        db.execSQL("INSERT INTO exercises (name, base_weight) VALUES ('Сгибания ног лежа', 40.0)");
-        db.execSQL("INSERT INTO exercises (name, base_weight) VALUES ('Жим ногами', 120.0)");
-        db.execSQL("INSERT INTO exercises (name, base_weight) VALUES ('Выпады с гантелями', 30.0)");
-        db.execSQL("INSERT INTO exercises (name, base_weight) VALUES ('Подтягивания', 0.0)");
-        db.execSQL("INSERT INTO exercises (name, base_weight) VALUES ('Отжимания на брусьях', 0.0)");
+        db.execSQL("INSERT INTO program_templates (id, title) VALUES (1, 'Сплит с упором на мышцы дельт и рук')");
 
-        db.execSQL("INSERT INTO day_templates (title) VALUES ('День Груди')");
-        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (1, 1)");
-        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (1, 7)");
-        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (1, 8)");
-        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (1, 13)");
-        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (1, 20)");
+        db.execSQL("INSERT INTO day_templates (id, title) VALUES (1, 'День спины')");
+        db.execSQL("INSERT INTO day_templates (id, title) VALUES (2, 'День груди')");
+        db.execSQL("INSERT INTO day_templates (id, title) VALUES (3, 'День ног')");
 
-        db.execSQL("INSERT INTO day_templates (title) VALUES ('День Спины')");
-        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (2, 3)");
-        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (2, 5)");
-        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (2, 10)");
-        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (2, 11)");
-        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (2, 19)");
-
-        db.execSQL("INSERT INTO day_templates (title) VALUES ('День Ног')");
-        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (3, 2)");
-        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (3, 15)");
-        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (3, 16)");
-        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (3, 17)");
-        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (3, 18)");
-
-        db.execSQL("INSERT INTO day_templates (title) VALUES ('День Плеч и Рук')");
-        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (4, 4)");
-        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (4, 9)");
-        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (4, 6)");
-        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (4, 12)");
-        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (4, 13)");
-        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (4, 14)");
-
-        db.execSQL("INSERT INTO day_templates (title) VALUES ('День Тяги')");
-        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (5, 3)");
-        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (5, 5)");
-        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (5, 10)");
-        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (5, 6)");
-        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (5, 12)");
-
-        db.execSQL("INSERT INTO day_templates (title) VALUES ('День Жима')");
-        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (6, 1)");
-        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (6, 4)");
-        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (6, 7)");
-        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (6, 9)");
-        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (6, 13)");
-        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (6, 20)");
-
-        db.execSQL("INSERT INTO day_templates (title) VALUES ('Фулл бади 1')");
-        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (7, 1)");
-        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (7, 2)");
-        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (7, 5)");
-        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (7, 6)");
-        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (7, 14)");
-
-        db.execSQL("INSERT INTO day_templates (title) VALUES ('Фулл бади 2')");
-        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (8, 3)");
-        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (8, 4)");
-        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (8, 10)");
-        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (8, 12)");
-        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (8, 18)");
-
-        db.execSQL("INSERT INTO day_templates (title) VALUES ('Фулл бади 3')");
-        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (9, 7)");
-        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (9, 15)");
-        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (9, 16)");
-        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (9, 19)");
-        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (9, 20)");
-
-        db.execSQL("INSERT INTO program_templates (title) VALUES ('Сплит')");
         db.execSQL("INSERT INTO program_days (program_id, day_id, sequence_order) VALUES (1, 1, 1)");
         db.execSQL("INSERT INTO program_days (program_id, day_id, sequence_order) VALUES (1, 2, 2)");
         db.execSQL("INSERT INTO program_days (program_id, day_id, sequence_order) VALUES (1, 3, 3)");
-        db.execSQL("INSERT INTO program_days (program_id, day_id, sequence_order) VALUES (1, 4, 4)");
 
-        db.execSQL("INSERT INTO program_templates (title) VALUES ('Фулл бади')");
-        db.execSQL("INSERT INTO program_days (program_id, day_id, sequence_order) VALUES (2, 7, 1)");
-        db.execSQL("INSERT INTO program_days (program_id, day_id, sequence_order) VALUES (2, 8, 2)");
-        db.execSQL("INSERT INTO program_days (program_id, day_id, sequence_order) VALUES (2, 9, 3)");
+        db.execSQL("INSERT INTO exercises (id, name, base_weight) VALUES (1, 'Подъем гантелей в стороны на среднюю дельту', 10.0)");
+        db.execSQL("INSERT INTO exercises (id, name, base_weight) VALUES (2, 'Тяга верхнего блока вертикальным хватом', 41.0)");
+        db.execSQL("INSERT INTO exercises (id, name, base_weight) VALUES (3, 'Тяга в тренажере на спину горизонтальным хватом', 75.0)");
+        db.execSQL("INSERT INTO exercises (id, name, base_weight) VALUES (4, 'Тяга в хаммере на одну руку', 12.5)");
+        db.execSQL("INSERT INTO exercises (id, name, base_weight) VALUES (5, 'Задняя дельта в хаммере', 10.0)");
+        db.execSQL("INSERT INTO exercises (id, name, base_weight) VALUES (6, 'Сгибание рук с W-грифом на бицепс', 20.0)");
+
+        db.execSQL("INSERT INTO exercises (id, name, base_weight) VALUES (7, 'Жим штанги лежа', 55.0)");
+        db.execSQL("INSERT INTO exercises (id, name, base_weight) VALUES (8, 'Жим гантелей на диагональной скамье', 14.0)");
+        db.execSQL("INSERT INTO exercises (id, name, base_weight) VALUES (9, 'Французский жим', 20.0)");
+        db.execSQL("INSERT INTO exercises (id, name, base_weight) VALUES (10, 'Задняя дельта в бабочке', 10.0)");
+        db.execSQL("INSERT INTO exercises (id, name, base_weight) VALUES (11, 'Разгибание на трицепс в блоке', 32.0)");
+        db.execSQL("INSERT INTO exercises (id, name, base_weight) VALUES (12, 'Сгибание гантелей на бицепс сидя', 6.0)");
+
+        db.execSQL("INSERT INTO exercises (id, name, base_weight) VALUES (13, 'Разведение гантелей в стороны', 8.0)");
+        db.execSQL("INSERT INTO exercises (id, name, base_weight) VALUES (14, 'Тяга штанги к подбородку (протяжка)', 25.0)");
+        db.execSQL("INSERT INTO exercises (id, name, base_weight) VALUES (15, 'Жим ногами', 200.0)");
+        db.execSQL("INSERT INTO exercises (id, name, base_weight) VALUES (16, 'Разгибание ног в тренажере', 61.0)");
+        db.execSQL("INSERT INTO exercises (id, name, base_weight) VALUES (17, 'Сгибание ног в тренажере', 41.0)");
+
+        db.execSQL("INSERT INTO exercises (id, name, base_weight) VALUES (18, 'Становая тяга', 100.0)");
+        db.execSQL("INSERT INTO exercises (id, name, base_weight) VALUES (19, 'Приседания со штангой', 80.0)");
+        db.execSQL("INSERT INTO exercises (id, name, base_weight) VALUES (20, 'Отжимания на брусьях', 0.0)");
+        db.execSQL("INSERT INTO exercises (id, name, base_weight) VALUES (21, 'Подтягивания на турнике', 0.0)");
+        db.execSQL("INSERT INTO exercises (id, name, base_weight) VALUES (22, 'Шраги с гантелями', 24.0)");
+        db.execSQL("INSERT INTO exercises (id, name, base_weight) VALUES (23, 'Гиперэкстензия', 15.0)");
+
+        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (1, 1)");
+        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (1, 2)");
+        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (1, 3)");
+        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (1, 4)");
+        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (1, 5)");
+        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (1, 6)");
+
+        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (2, 7)");
+        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (2, 8)");
+        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (2, 9)");
+        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (2, 10)");
+        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (2, 11)");
+        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (2, 12)");
+
+        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (3, 13)");
+        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (3, 14)");
+        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (3, 15)");
+        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (3, 16)");
+        db.execSQL("INSERT INTO day_exercises (day_id, exercise_id) VALUES (3, 17)");
     }
 
     @Override
@@ -218,21 +179,6 @@ public class AppDatabase extends SQLiteOpenHelper {
                 new Object[]{dayId, exerciseId});
         db.close();
     }
-
-//    public List<DayTemplate> getAllDayTemplates() {
-//        List<DayTemplate> list = new ArrayList<>();
-//        SQLiteDatabase db = this.getReadableDatabase();
-//        Cursor cursor = db.rawQuery("SELECT id, title FROM day_templates", null);
-//
-//        if (cursor.moveToFirst()) {
-//            do {
-//                list.add(new DayTemplate(cursor.getLong(0), cursor.getString(1)));
-//            } while (cursor.moveToNext());
-//        }
-//        cursor.close();
-//        db.close();
-//        return list;
-//    }
 
     public void deleteDayTemplate(long id) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -405,8 +351,8 @@ public class AppDatabase extends SQLiteOpenHelper {
 
                                 calculatedWeight = Math.round(calculatedWeight);
 
-                                db.execSQL("INSERT INTO active_exercises (day_id, exercise_name, plan_weight, plan_reps, actual_weight, actual_reps) VALUES (?, ?, ?, ?, 0, 0)",
-                                        new Object[]{activeDayId, exName, calculatedWeight, phase.getReps()});
+                                db.execSQL("INSERT INTO active_exercises (day_id, exercise_name, plan_weight, plan_reps, actual_weight, actual_reps) VALUES (?, ?, ?, ?, ?, ?)",
+                                        new Object[]{activeDayId, exName, calculatedWeight, phase.getReps(), calculatedWeight, phase.getReps()});
 
                             } while (exCursor.moveToNext());
                         }

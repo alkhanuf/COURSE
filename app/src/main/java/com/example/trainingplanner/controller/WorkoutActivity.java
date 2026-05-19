@@ -63,6 +63,9 @@ public class WorkoutActivity extends AppCompatActivity {
                 tvPlan.setText("План: " + ex.getPlanWeight() + " кг х " + ex.getPlanReps());
             }
 
+            etWeight.setText(String.valueOf(ex.getActualWeight()));
+            etReps.setText(String.valueOf(ex.getActualReps()));
+
             etWeight.addTextChangedListener(new TextWatcher() {
                 @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
                 @Override public void onTextChanged(CharSequence s, int start, int before, int count) {}
@@ -95,7 +98,7 @@ public class WorkoutActivity extends AppCompatActivity {
         btnSave.setOnClickListener(v -> {
             db.saveWorkoutResults(dayId, exercisesList);
 
-            Toast.makeText(this, "Тренировка сохранена", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Тренировка сохранена", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(WorkoutActivity.this, MainActivity.class);
             startActivity(intent);
         });

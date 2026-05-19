@@ -33,7 +33,7 @@ public class AnalysisLogic {
                 if (act1PM > existingItem.maxActual1PM) {
                     existingItem.maxActual1PM = act1PM;
                 }
-                existingItem.totalVolume += currentVolume;
+                existingItem.totalWeight += currentVolume;
             } else {
 
                 ExerciseAnalysis newItem = new ExerciseAnalysis();
@@ -41,7 +41,7 @@ public class AnalysisLogic {
                 newItem.name = name;
                 newItem.maxPlan1PM = plan1PM;
                 newItem.maxActual1PM = act1PM;
-                newItem.totalVolume = currentVolume;
+                newItem.totalWeight = currentVolume;
                 results.add(newItem);
             }
         }
@@ -65,7 +65,7 @@ public class AnalysisLogic {
     public static double calculateTotalCycleVolume(List<ExerciseAnalysis> analyzedData) {
         double total = 0;
         for (ExerciseAnalysis item : analyzedData) {
-            total += item.totalVolume;
+            total += item.totalWeight;
         }
         return total;
     }

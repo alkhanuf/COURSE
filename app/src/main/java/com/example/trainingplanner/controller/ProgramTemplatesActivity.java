@@ -67,7 +67,7 @@ public class ProgramTemplatesActivity extends AppCompatActivity {
     private void showSelectDaysDialog(String programTitle) {
         List<DayTemplate> allDays = db.getAllDayTemplatesWithExercises();
         if (allDays.isEmpty()) {
-            Toast.makeText(this, "Сначала создайте шаблоны дней!", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Сначала создайте шаблоны дней!", Toast.LENGTH_SHORT).show();
             return;
         }
 

@@ -82,7 +82,7 @@ public class NewCycleActivity extends AppCompatActivity {
             } else {
 
 
-                Toast.makeText(this, "Цикл должен содержать хотя бы одну фазу", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Цикл должен содержать хотя бы одну фазу", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -108,7 +108,7 @@ public class NewCycleActivity extends AppCompatActivity {
             String repsStr = etReps.getText().toString().trim();
 
             if (weeksStr.isEmpty() || percentStr.isEmpty() || repsStr.isEmpty()) {
-                Toast.makeText(this, "Заполните все поля во всех фазах!", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Заполните все поля во всех фазах!", Toast.LENGTH_SHORT).show();
                 return;
             }
 

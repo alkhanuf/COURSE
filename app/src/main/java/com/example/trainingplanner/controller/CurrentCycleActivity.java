@@ -48,14 +48,14 @@ public class CurrentCycleActivity extends AppCompatActivity {
 
         String programTitle = db.getActiveCycleProgramTitle();
         if (programTitle == null) {
-            Toast.makeText(this, "У вас нет активного цикла", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "У вас нет активного цикла", Toast.LENGTH_SHORT).show();
             finish();
             return;
         }
 
         btnAnalysis.setOnClickListener(v -> {
             if (db.hasNotFinishedDays()) {
-                Toast.makeText(this, "У вас есть не завершенные тренировки", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "У вас есть не завершенные тренировки", Toast.LENGTH_SHORT).show();
             } else {
                 android.content.Intent intent = new android.content.Intent(this, AnalysisActivity.class);
                 startActivity(intent);
