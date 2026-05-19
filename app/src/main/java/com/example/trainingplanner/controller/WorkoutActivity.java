@@ -92,7 +92,7 @@ public class WorkoutActivity extends AppCompatActivity {
         btnSave.setOnClickListener(v -> {
             db.saveWorkoutResults(dayId, exercisesList);
 
-            Toast.makeText(this, "Тренировка сохранена", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Тренировка сохранена", Toast.LENGTH_LONG).show();
 
             finish();});
     }
