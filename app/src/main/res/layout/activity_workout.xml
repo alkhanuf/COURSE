@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_dark"
+    android:orientation="vertical"
+    android:padding="15dp">
+
+    <TextView
+        android:id="@+id/tvWorkoutTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white_text"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="15dp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:id="@+id/containerWorkoutExercises"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btnSaveWorkout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Завершить тренировку"
+        android:backgroundTint="@color/purple_button"
+        android:textColor="@color/white_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp"
+        android:padding="12dp" />
+
+</LinearLayout>
